@@ -19,13 +19,21 @@
                 {{-- <form wire:submit.prevent="save" method="POST" enctype="multipart/form-data">
                     @include('admin.documentos.partials._form')
                 </form> --}}
-                <form wire:submit.prevent="save">
                     <input type="file" wire:model="arquivo">
                  
                     @error('arquivo') <span class="error">{{ $message }}</span> @enderror
+
+                    <input type="text" wire:model="nome_arquivo">
                  
-                    <button type="submit">Save Doc</button>
-                </form>
+                    @error('nome_arquivo') <span class="error">{{ $message }}</span> @enderror
+                 
+                    <button type="submit" wire:click='save'>Save Doc</button>
+                {{-- <form action="{{ route('documentos.save') }}" method="POST">
+                    @csrf
+                    <input type="file" name="arquivo">
+                    <input type="text" name="nome_arquivo" placeholder="Escreva o titulo do documento">
+                    <button type="submit" >Save Doc</button>
+                </form> --}}
         </div>
 
     </div>

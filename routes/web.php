@@ -63,6 +63,7 @@ Route::post('/cadastro', [PessoaController::class, 'store'])->name('store.cadast
 
 Route::get('/admin/documentos', IndexDocumentos::class)->name('documentos.index');
 Route::get('/documentos/create', CreateDocumento::class)->name('documentos.create');
+Route::post('/admin/documentos', [CreateDocumento::class, 'save'])->name('documentos.save');
 Route::get('/documentos/{filename}/edit', EditDocumento::class)->name('documentos.edit');
 
 // Rotas para o cidadão
