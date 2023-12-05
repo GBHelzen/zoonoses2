@@ -13,9 +13,9 @@
                         <x-label for="nome_arquivo" :value="__('Título do Documento')" /> <span class="ml-1 text-sm text-red-700">*</span>
                     </div>
 
-                    <x-input wire:model="documento.nome_arquivo" id="nome_arquivo" class="block mt-1 w-full" type="text" name="nome"
-                        :value="old('documento.nome_arquivo')" />
-                    @error('documento.nome_arquivo') <span class="text-red-700">{{ $message }}</span> @enderror
+                    <x-input wire:model="nome_arquivo" id="nome_arquivo" class="block mt-1 w-full" type="text" name="nome"
+                        :value="old('nome_arquivo')" />
+                    @error('nome_arquivo') <span class="text-red-700">{{ $message }}</span> @enderror
                 </div>
             </div>
 

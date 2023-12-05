@@ -3,40 +3,47 @@
 namespace App\Http\Livewire\Admin\Documentos;
 
 use App\Models\Documento;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EditDocumento extends Component
 {
+    use WithFileUploads;
     public Documento $documento;
 
+    public $arquivo;
+    public $nome_arquivo;
 
-    function rules()
+    public function save()
     {
-        return [
-            'documento.arquivo' => ['required'],
-            'documento.nome_arquivo' => ['required'],
-        ];
-    }
+        $this->validate([
+            'arquivo' => 'file|max:5120', // 5MB Max
+            'nome_arquivo' => 'required',
+        ]);
 
-    public function store()
-    {
-        $this->validate();
+        // Pegar o nome original do arquivo e armazena-lo na pasta docs
+        $arquivo = $this->arquivo->getClientOriginalName();
+        $this->arquivo->storeAs('docs', $arquivo);
 
-        DB::transaction(function () {
-            $this->documento->save();
-        });
+        // Salvando no banco de dados
+        $documento = new Documento;
+        $documento->arquivo = $arquivo;
+        $documento->nome_arquivo = $this->nome_arquivo;
+        $documento->path = ('/storage/docs/' . basename($arquivo));
+        $documento->save();
 
-        session()->flash('success', 'Documento ' . $this->documento->nome_arquivo . ' editado com sucesso !');
+        session()->flash('success', 'Documento ' . $this->documento->nome_arquivo . ' editado com sucesso!');
 
         return redirect()->route('documentos.index');
+
     }
 
     public function mount(Documento $documento)
     {
         $this->documento = $documento;
     }
+
+
     public function render()
     {
         return view('admin.documentos.edit-documento')->layout('layouts.admin');

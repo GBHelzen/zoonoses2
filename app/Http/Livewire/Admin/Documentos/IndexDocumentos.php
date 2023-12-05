@@ -33,8 +33,7 @@ class IndexDocumentos extends Component
         return view(
             'admin.documentos.index-documentos',
             [
-                'documentos' => Documento::where('nome_arquivo', 'ilike', '%' . $this->search .  '%')
-                    ->orderBy('nome_arquivo', 'asc')->paginate(10),
+                'documentos' => Documento::latest()->paginate()
             ]
         )->layout('layouts.admin');
     }
