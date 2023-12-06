@@ -32,7 +32,7 @@ class CreateDocumento extends Component
         $documento->path = ('/storage/docs/' . basename($arquivo));
         $documento->save();
 
-        session()->flash('success', 'Documento ' . $this->documento->nome_arquivo . ' cadastrado com sucesso!');
+        session()->flash('success', 'Documento ' . $documento->nome_arquivo . ' cadastrado com sucesso!');
 
         return redirect()->route('documentos.index');
 
