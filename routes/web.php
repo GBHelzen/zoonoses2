@@ -55,12 +55,6 @@ Route::post('/cadastro', [PessoaController::class, 'store'])->name('store.cadast
 // END Rotas públicas
 
 // Rotas painel documentos
-// Route::get('/admin/documentos', [DocumentoController::class, 'index'])->name('documentos.index');
-// Route::get('/admin/documentos/create', [DocumentoController::class, 'create'])->name('documentos.create');
-// Route::post('/admin/documentos', [DocumentoController::class, 'store'])->name('documentos.store');
-// Route::get('/documentos/{filename}', [DocumentoController::class, 'show'])->name('documentos.show');
-// Route::get('/admin/documentos/{filename}/edit', EditDocumento::class)->name('documentos.edit');
-
 Route::get('/admin/documentos', IndexDocumentos::class)->name('documentos.index');
 Route::get('/documentos/create', CreateDocumento::class)->name('documentos.create');
 Route::post('/admin/documentos', [CreateDocumento::class, 'save'])->name('documentos.save');
