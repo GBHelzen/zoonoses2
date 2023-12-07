@@ -13,35 +13,38 @@ class EditDocumento extends Component
 
     public $arquivo;
     public $nome_arquivo;
-
-    public function save()
+    
+    public function mount(Documento $documento)
     {
+        $this->documento = $documento;
+        $this->nome_arquivo = $this->documento->nome_arquivo;
+        $this->arquivo = $this->documento->arquivo;
+    }
+    public function updateData()
+    {
+
         $this->validate([
-            'arquivo' => 'file|max:5120', // 5MB Max
+            'arquivo' => 'file|mimes:pdf,doc,docx|max:20000', // 5MB Max
             'nome_arquivo' => 'required',
         ]);
+        
+        // $data = Documento::find($this->documento_id);
+        $data = $this->documento;
 
         // Pegar o nome original do arquivo e armazena-lo na pasta docs
         $arquivo = $this->arquivo->getClientOriginalName();
         $this->arquivo->storeAs('docs', $arquivo);
 
-        // Salvando no banco de dados
-        $documento = new Documento;
-        $documento->arquivo = $arquivo;
-        $documento->nome_arquivo = $this->nome_arquivo;
-        $documento->path = ('/storage/docs/' . basename($arquivo));
-        $documento->save();
+        $data->arquivo = $arquivo;
+        $data->nome_arquivo = $this->nome_arquivo;
+        $data->path = ('/storage/docs/' . basename($arquivo));
+        $data->save();
 
-        session()->flash('success', 'Documento ' . $this->documento->nome_arquivo . ' editado com sucesso!');
+        session()->flash('success', 'Documento ' . $data->nome_arquivo . ' editado com sucesso!');
 
         return redirect()->route('documentos.index');
-
     }
 
-    public function mount(Documento $documento)
-    {
-        $this->documento = $documento;
-    }
 
 
     public function render()
