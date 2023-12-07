@@ -17,7 +17,7 @@
                     @include('admin.documentos.partials._form')
                 </form> --}}
                 <div class="mt-5 md:mt-0 md:col-span-3">
-                    <input type="file" wire:model="arquivo">
+                    <input type="file" wire:model="arquivo" accept="application/pdf">
                      
                     @error('arquivo') <span class="error">{{ $message }}</span> @enderror
     
