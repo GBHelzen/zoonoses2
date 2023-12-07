@@ -32,7 +32,7 @@ class IndexDocumentos extends Component
     {
 
         $this->validate([
-            'arquivo' => 'file|max:5120', // 5MB Max
+            'arquivo' => 'file|mimes:pdf,doc,docx|max:5120', // 5MB Max
             'nome_arquivo' => 'required',
         ]);
         

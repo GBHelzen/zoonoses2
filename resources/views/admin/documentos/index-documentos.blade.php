@@ -87,6 +87,8 @@
                             @error('nome_arquivo') <span class="text-red-700">{{ $message }}</span> @enderror
                         </div>
                     </div>
+
+                    <br>
         
                     <div class="col-span-6 sm:col-span-3">
                         <!-- Arquivo -->
@@ -95,9 +97,11 @@
                                 <x-label for="arquivo" :value="__('Arquivo')" /> <span
                                     class=" ml-1 text-sm text-red-700">*</span>
                             </div>
+                            
+                            <br>
         
-                            <x-input wire:model="arquivo" id="arquivo" class="input-file" type="file"
-                                name="arquivo" :value="old('arquivo')" />
+                            <x-input wire:model="arquivo" id="arquivo" class="input-file" type="file" accept="application/pdf"
+                                name="arquivo" :value="old('arquivo')" /> 
                             @error('arquivo') <span class="text-red-700">{{ $message }}</span>
                             @enderror
                         </div>
@@ -112,7 +116,7 @@
                 </a>
                 <button type="submit" wire:click="updateData"
                     class="py-auto inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Salvar
+                    Atualizar Documento
                 </button>
             </div>
         </div>

@@ -12,12 +12,14 @@
 
                         <x-label for="nome_arquivo" :value="__('Título do Documento')" /> <span class="ml-1 text-sm text-red-700">*</span>
                     </div>
-
+                    
                     <x-input wire:model="nome_arquivo" id="nome_arquivo" class="block mt-1 w-full" type="text" name="nome"
                         :value="old('nome_arquivo')" />
                     @error('nome_arquivo') <span class="text-red-700">{{ $message }}</span> @enderror
                 </div>
             </div>
+
+            <br>
 
             <div class="col-span-6 sm:col-span-3">
                 <!-- Arquivo -->
@@ -26,8 +28,9 @@
                         <x-label for="arquivo" :value="__('Arquivo')" /> <span
                             class=" ml-1 text-sm text-red-700">*</span>
                     </div>
+                    <br>
 
-                    <x-input wire:model="arquivo" id="arquivo" class="input-file" type="file"
+                    <x-input wire:model="arquivo" id="arquivo" class="input-file" type="file" accept="application/pdf"
                         name="arquivo" :value="old('arquivo')" />
                     @error('arquivo') <span class="text-red-700">{{ $message }}</span>
                     @enderror
