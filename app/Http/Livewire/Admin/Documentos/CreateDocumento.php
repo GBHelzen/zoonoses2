@@ -17,7 +17,7 @@ class CreateDocumento extends Component
     public function save()
     {
         $this->validate([
-            'arquivo' => 'file|mimes:pdf,doc,docx|max:20000', // 5MB Max
+            'arquivo' => 'file|mimes:pdf,doc,docx|max:20480', // 5MB Max
             'nome_arquivo' => 'required',
         ]);
 
@@ -42,7 +42,6 @@ class CreateDocumento extends Component
     {
         $this->documento = new Documento();
     }
-
 
     public function render()
     {

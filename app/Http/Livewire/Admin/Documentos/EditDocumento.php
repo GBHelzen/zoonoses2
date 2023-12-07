@@ -24,11 +24,10 @@ class EditDocumento extends Component
     {
 
         $this->validate([
-            'arquivo' => 'file|mimes:pdf,doc,docx|max:20000', // 5MB Max
+            'arquivo' => 'file|mimes:pdf,doc,docx|max:20480', // 5MB Max
             'nome_arquivo' => 'required',
         ]);
         
-        // $data = Documento::find($this->documento_id);
         $data = $this->documento;
 
         // Pegar o nome original do arquivo e armazena-lo na pasta docs
@@ -44,8 +43,6 @@ class EditDocumento extends Component
 
         return redirect()->route('documentos.index');
     }
-
-
 
     public function render()
     {
