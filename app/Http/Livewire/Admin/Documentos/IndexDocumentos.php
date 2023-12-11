@@ -26,9 +26,9 @@ class IndexDocumentos extends Component
     {
         $documento->delete();
 
-        session()->flash('success', 'Documento' . $documento->nome_arquivo . ' deletado com sucesso!');
-
         $this->deleteModal = false;
+
+        session()->flash('success', 'Documento' . $documento->nome_arquivo . ' deletado com sucesso!');
     }
 
     public function render()

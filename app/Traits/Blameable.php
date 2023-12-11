@@ -20,9 +20,8 @@ trait Blameable
                 $model->updated_by = Auth::id();
             });
 
-            static::deleted(function ($model) {
-                // dd($model->deleted_by );
-                $model->deleted_by = Auth::id();
+            static::deleting(function ($model) {
+                $model->update(['deleted_by' =>  Auth::id()]);
             });
         }
     }
