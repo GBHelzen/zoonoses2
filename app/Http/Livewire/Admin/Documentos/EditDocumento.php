@@ -24,7 +24,7 @@ class EditDocumento extends Component
     {
 
         $this->validate([
-            'arquivo' => 'file|mimes:pdf,doc,docx|max:20480', // 5MB Max
+            'arquivo' => 'file|mimes:pdf,doc,docx,xls,xlsx|max:20480', // 20MB Max
             'nome_arquivo' => 'required',
         ]);
         
