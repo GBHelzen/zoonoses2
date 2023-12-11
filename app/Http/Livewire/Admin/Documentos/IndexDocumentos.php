@@ -12,8 +12,8 @@ class IndexDocumentos extends Component
     public $arquivo;
     public $nome_arquivo;
     public $deleteModal  = false;
-
     public $documento = null;
+    public $search = '';
 
     public function openModal(Documento $documento)
     {
@@ -36,7 +36,8 @@ class IndexDocumentos extends Component
         return view(
             'admin.documentos.index-documentos',
             [
-                'documentos' => Documento::latest()->paginate()
+                'documentos' => Documento::where('nome_arquivo', 'ilike', '%' . $this->search .  '%')
+                    ->orderBy('nome_arquivo', 'asc')->paginate(10),
             ]
         )->layout('layouts.admin');
     }

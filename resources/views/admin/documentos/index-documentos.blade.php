@@ -8,6 +8,16 @@
         @include('admin.documentos.partials._delete-modal')
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="pb-8 items-center lg:flex-row  flex-col">
+                    <div class="grid grid-cols-3 gap-1">
+                        {{-- Barra de pesquisa (filtro de documentos por nome) --}}
+                        <div class="col-span-1">
+                            <label for="" class="sm:text-sm text-sm font-medium text-gray-700">Título do documento</label>
+                            <x-input wire:model="search" type="text" placeholder="Pesquise pelo documento" class="w-full sm:text-sm">
+                            </x-input>
+                        </div>
+                    </div>
+                </div>
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
